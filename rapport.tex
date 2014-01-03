@@ -7,7 +7,7 @@
 \usepackage{graphicx}
 \usepackage{float}
 
-\graphicspath{{images/}{Maquettes/PNG/}}
+\graphicspath{{images/}{Maquettes/PNG/}{UML/}}
 \title{Rapport de conception}
 \author{Adonis \bsc{Najimi},\\
  Valentin \bsc{Stern},\\
@@ -16,18 +16,31 @@
 \date{\today}
 
 \begin{document}
+
 \maketitle
+\newpage
+
 \section{Présentation du projet}
 \section{Client C++}
-\subsection{UML}
+	\subsection{Présentation du client}
+	\subsection{UML de l'interface graphique}
+		\input{GUI}
+	\subsection{Maquettes du client}
+		\input{Maquettes_client}
+	\subsection{Liaison avec l'application web}
+		\input{Reseau}
 \section{Application Web}
-\subsection{Maquettes d'écran}
-\input{Maquettes}
-\subsection{Modèle Merise MCD}
-\input{MCD}
-\subsection{Modèle Merise MLD}
-\input{MLD}
-\subsection{Structure de l'application}
-\input{Structure}
+	\subsection{Maquettes d'écran}
+		\input{Maquettes}
+	\subsection{Modèle Merise MCD}
+		\input{MCD}
+	\subsection{Modèle Merise MLD}
+		\input{MLD}
+	\subsection{Structure de l'application}
+		\input{Structure}
+
+\newpage
+\tableofcontents
+
 
 \end{document}
