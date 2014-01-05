@@ -1,25 +1,30 @@
-\begin{tabbing}
+% \begin{tabbing}
 
-\ul{fonction} analyser(frequences : \ul{tableau entier}[0..n], n : \ul{entier}, seuilMin : \ul{entier}) : \ul{tableau Accord}\\
-\ul{debut}\\
-frequences <- trier(frequences)\\
-i <- 0\\
-complet <- faux\\
-\ul{Tant que} i < n \ul{et} \ul{non} complet \ul{faire}\\
-    freq <- frequences[i]\\
-    \ul{Si} freq > seuilMin \ul{et} \ul{non} present(retour, freq)\\
-    \ul{alors}\\
-        ajouter(retour, freq)\\
-        \ul{Si} taille(retour) > 5\\
-        \ul{alors}\\
-            complet <- vrai\\
-        \ul{fsi}\\
-    \ul{fsi}\\
-\ul{ftantque}\\
-\ul{retourne} retour\\
-\ul{fin}\\
-\end{tabbing}
+% \ul{fonction} analyser(frequences : \ul{tableau entier}[0..n], n : \ul{entier}, seuilMin : \ul{entier}) : \ul{tableau Accord}\\
+% \ul{debut}\\
+% frequences <- trier(frequences)\\
+% i <- 0\\
+% complet <- faux\\
+% \ul{Tant que} i < n \ul{et} \ul{non} complet \ul{faire}\\
+%     freq <- frequences[i]\\
+%     \ul{Si} freq > seuilMin \ul{et} \ul{non} present(retour, freq)\\
+%     \ul{alors}\\
+%         ajouter(retour, freq)\\
+%         \ul{Si} taille(retour) > 5\\
+%         \ul{alors}\\
+%             complet <- vrai\\
+%         \ul{fsi}\\
+%     \ul{fsi}\\
+% \ul{ftantque}\\
+% \ul{retourne} retour\\
+% \ul{fin}\\
+% \end{tabbing}
+% \newline
+% \ul{lexique}\newline
 
+\ul{Structures de donnees utilisees dans les algorithmes:}\newline
+\ul{Note} < frequence : \ul{entier}, nom : \ul{chaine} >\newline
+\ul{EntreeMicro} : Type correspondant à l'entrée micro de l'ordinateur. Il permet de récupérer les fréquences à un certain instant\newline
 % Algo de récupérer une note avec sa fréquence
 \begin{tabbing}
 \ul{fonction} recupererNote(frequence : \ul{entier}, notes : \ul{Note[0..n]}, n : \ul{entier}) : Note\\
@@ -50,10 +55,20 @@ trouve <- faux\\
 \ul{retourne} retour\\
 \ul{fin}\\
 \end{tabbing}
+\ul{lexique}\newline
+frequence : \ul{entier} : Fréquences de la note à récupérer\newline
+notes : \ul{Note[0..n]} : Toutes les notes possibles\newline
+n :  \ul{entier} : Nombre de notes possibles\newline
+max : \ul{entier} : indice maximal dans le tableau\newline
+min : \ul{entier} : indice minimal dans le tableau\newline
+trouve : \ul{booleen} : Booléen à vrai si on a trouvé la note (avec exactement la même fréquence)\newline
+indice : \ul{entier} : Indice en cours dans le tableau\newline
+frequenceNote : \ul{entier} : Frequence de la note en cours d'analyse\newline
+retour : \ul{Note} : Note correspondant à la fréquence\newline
 
 
 \begin{tabbing}
-\ul{fonction} trier(frequences : \ul{tableau eniter}[0..n], n\ul{entier})
+\ul{fonction} trier(frequences : \ul{tableau entier}[0..n], n\ul{entier})
 \end{tabbing}
 
 
@@ -68,6 +83,12 @@ freqs <- trier(freqs)\\
 \ul{ftantque}\\
 \ul{fin}\\
 \end{tabbing}
+
+\ul{lexique}\newline
+mic : \ul{entreeMicro} : Entrée micro utilisée\newline
+accorder : \ul{booleen} : Booleen à vrai si on continue à accorder. Il peut être changer grâce à un clic dans l'application\newline
+freqs : freqs : \ul{tableau entier}[0..n] : Frequences envoyées par mic\newline
+\newline
 
 %Enregistrement d'une partition
 \begin{tabbing}
