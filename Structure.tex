@@ -1,6 +1,8 @@
 \paragraph{}
-La structure du site suivra le modèle MVC.
-Des tests unitaires seront utilisés pour s'assurer du bon fonctionnement de l'application.
+La structure du site suivra le modèle MVC.\\
+Des tests unitaires seront utilisés pour s'assurer du bon fonctionnement de l'application.\\
+Le site sera à l'aide d'un framework MVC Javascript (Express) pour gérer la partie Serveur et un autre framework complémentaire qui sera utilisé pour les vues et les controllers en particulier (AngularJS).\\
+Utiliser Javascript pour coder toute l'application web aussi bien du côté client que du côté serveur nous permettra d'avoir une première approche avec cette technologie qui devient de plus en plus demandée aujourd'hui. Ce qui rend donc ce projet très enrichissant pour notre avenir professionel.
 \\
 \\
 Le site sera donc divisé en trois principales parties : \\
@@ -20,13 +22,13 @@ Views : \\
 
 Controllers: \\
 Les controllers seront utilisés pour faire le lien entre le modèle et les différentes vues. De plus ils permettront de gérer les fonctionnalités spécifiques au site. \\
-home.js => controller général \\
-profil.js => controller du compte qui gère le profil utilisateur\\
-groupe.js => controller qui gère les groupes utilisateurs \\
-listing.js => controller qui gère la liste des partitions ainsi que la fonction recherche dans celles-ci\\
-topbare.js => permet de gérer la barre de menu présente sur le haut du site\\
-partition.js  => permet de gérer les fonctionnalités d'une partition en particulier\\
-partition-page.js => controller qui gère la page d'une partition\\
+-home.js => controller général \\
+-profil.js => controller du compte qui gère le profil utilisateur\\
+-groupe.js => controller qui gère les groupes utilisateurs \\
+-listing.js => controller qui gère la liste des partitions ainsi que la fonction recherche dans celles-ci\\
+-topbare.js => permet de gérer la barre de menu présente sur le haut du site\\
+-partition.js  => permet de gérer les fonctionnalités d'une partition en particulier\\
+-partition-page.js => controller qui gère la page d'une partition\\
 
 Les modèles suivent l'architecture Active Record. \\
 Ils seront donc liés à la base de données (cf MCD et MLD). \\
@@ -37,5 +39,5 @@ Ces modules contiendront toutes les méthodes nécessaires au traitement et à l
 Routes: \\
 Chaque lien est une route qui peut contenir une action et qui actionne une méthode du controller lié à la route. \\
 Une route est donc un chemin représenté par un URL. \\
-Ces routes sont donc le coeur du fonctionnement de l'application Web\\
+Ces routes sont donc le coeur du fonctionnement de l'application Web.\\
 
