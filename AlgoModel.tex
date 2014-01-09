@@ -26,6 +26,7 @@
 \ul{Note} < frequence : \ul{entier}, nom : \ul{chaine} >\newline
 \ul{EntreeMicro} : Type correspondant à l'entrée micro de l'ordinateur. Il permet de récupérer les fréquences à un certain instant\newline
 % Algo de récupérer une note avec sa fréquence
+Récupérer une note grâce à sa fréquence\newline
 \begin{tabbing}
 \ul{fonction} recupererNote(frequence : \ul{entier}, notes : \ul{Note[0..n]}, n : \ul{entier}) : Note\\
 \ul{debut}\\
@@ -66,12 +67,48 @@ indice : \ul{entier} : Indice en cours dans le tableau\newline
 frequenceNote : \ul{entier} : Frequence de la note en cours d'analyse\newline
 retour : \ul{Note} : Note correspondant à la fréquence\newline
 
+Fonction de placement nécessaire à la fonction trier\newline
 
 \begin{tabbing}
-\ul{fonction} trier(frequences : \ul{tableau entier}[0..n], n\ul{entier})
+\ul{fonction} placer(tab : \ul{InOut} \ul{tableau entier}[0..n], n : \ul{entier}, inf : \ul{entier}, sup : \ul{entier}) : \ul{entier}\\
+\ul{debut}\\
+    inda <- inf\\
+    a <- tab[inf]\\
+    inf <- inf + 1
+    \ul{Tant que } sup >= inf \ul{faire}\\
+        \ul{Si} tab[inf] > a\\
+        \ul{alors}\\
+            \ul{Tant que} sup >= inf \ul{ou} tab[sup] > a \ul{faire}\\
+                sup <- sup - 1\\
+            \ul{ftantque}\\
+            temp <- tab[sup]\\
+            tab[sup] <- tab[inf]\\
+            tab[inf] <- temp\\
+            sup <- sup - 1\\
+        \ul{fsi}\\
+        inf <- inf + 1\\
+    \ul{ftantque}\\
+    temp <- tab[sup]\\
+    tab[sup] <- tab[inda]\\
+    tab[inda] <- temp\\
+    \ul{retourne} sup\\
+\ul{fin}\\
 \end{tabbing}
 
+Fonction de tri des fréquences\newline
+\begin{tabbing}
+\ul{fonction} trier(frequences : \ul{tableau entier}[0..n], n : \ul{entier}, inf : \ul{entier}, sup : \ul{entier})\\
+\ul{debut}\\
+    \ul{Si} inf < sup\\
+    \ul{alors}\\
+        indice <- placer(frequences, inf, sup)\\
+        trier(frequences, n, inf, indice - 1)\\
+        trier(frequences, n, indice + 1, sup)\\
+    \ul{fsi}\\
+\ul{fin}\\ 
+\end{tabbing}
 
+Montrer la note principale(pour l'accordeur)\newline
 \begin{tabbing}
 \ul{fonction} montrerNote(mic : \ul{entreeMicro})\\
 \ul{debut}\\
@@ -90,6 +127,7 @@ accorder : \ul{booleen} : Booleen à vrai si on continue à accorder. Il peut ê
 freqs : freqs : \ul{tableau entier}[0..n] : Frequences envoyées par mic\newline
 \newline
 
+Enregistrement d'une partition\newline
 %Enregistrement d'une partition
 \begin{tabbing}
 \ul{fonction} enregistrer(mic : \ul{entreeMicro}, seuilHaut :  \ul{entier}, seuilBas : \ul{entier}, tempo : \ul{entier}) : \ul{Partition}\\
@@ -124,3 +162,5 @@ j <- 0\\
 \end{tabbing}
 
 Nous attendons pendant tempo / 16 car c'est la plus petite unité de temps représentable dans une partition. L'utilisateur doit rentrer le tempo dans lequel il compte jouer.
+
+
