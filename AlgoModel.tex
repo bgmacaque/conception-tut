@@ -28,32 +28,34 @@
 % Algo de récupérer une note avec sa fréquence
 Récupérer une note grâce à sa fréquence\newline
 \begin{tabbing}
+\kill XX\=XX\=XX\=XX\=XX\=XX\=XX\=XX\=XX\=XX\=
+\kill
 \ul{fonction} recupererNote(frequence : \ul{entier}, notes : \ul{Note[0..n]}, n : \ul{entier}) : Note\\
 \ul{debut}\\
-min <- 0\\
-max <- n\\
-trouve <- faux\\
-\ul{Tant que} min <= max \ul{et} \ul{non} trouve \ul{faire}\\
-    indice <- (max + min) /2 \\
-    frequenceNote <- notes[indice].frequence\\
-    \ul{Si} frequence = frequenceNote\\
-    \ul{alors}\\
-        retour <- notes[indice]\\
-        trouve <- vrai\\
-    \ul{sinon}\\
-        \ul{Si} frequence < frequenceNote\\
-        \ul{alors}\\
-            max <- indice\\
-        \ul{sinon}\\
-            min <- indice\\
-        \ul{fsi}\\
-    \ul{fsi}\\
-\ul{ftantque}\\
-\ul{Si} \ul{non} trouve\\
-\ul{alors}\\
-    retour <- notes[min]\\
-\ul{fsi}\\
-\ul{retourne} retour\\
+\>min <- 0\\
+\>max <- n\\
+\>trouve <- faux\\
+\>\ul{Tant que} min <= max \ul{et} \ul{non} trouve \ul{faire}\\
+    \>\>indice <- (max + min) /2 \\
+    \>\>frequenceNote <- notes[indice].frequence\\
+    \>\>\ul{Si} frequence = frequenceNote\\
+    \>\>\ul{alors}\\
+        \>\>\>retour <- notes[indice]\\
+        \>\>\>trouve <- vrai\\
+    \>\>\ul{sinon}\\
+        \>\>\>\ul{Si} frequence < frequenceNote\\
+        \>\>\>\ul{alors}\\
+            \>\>\>\>max <- indice\\
+        \>\>\>\ul{sinon}\\
+            \>\>\>\>min <- indice\\
+        \>\>\>\ul{fsi}\\
+    \>\>\ul{fsi}\\
+\>\ul{ftantque}\\
+\>\ul{Si} \ul{non} trouve\\
+\>\ul{alors}\\
+    \>\>retour <- notes[min]\\
+\>\ul{fsi}\\
+\>\ul{retourne} retour\\
 \ul{fin}\\
 \end{tabbing}
 \ul{lexique}\newline
@@ -70,54 +72,60 @@ retour : \ul{Note} : Note correspondant à la fréquence\newline
 Fonction de placement nécessaire à la fonction trier\newline
 
 \begin{tabbing}
+\kill XX\=XX\=XX\=XX\=XX\=XX\=XX\=XX\=XX\=XX\=
+\kill
 \ul{fonction} placer(tab : \ul{InOut} \ul{tableau entier}[0..n], n : \ul{entier}, inf : \ul{entier}, sup : \ul{entier}) : \ul{entier}\\
 \ul{debut}\\
-    inda <- inf\\
-    a <- tab[inf]\\
-    inf <- inf + 1
-    \ul{Tant que } sup >= inf \ul{faire}\\
-        \ul{Si} tab[inf] > a\\
-        \ul{alors}\\
-            \ul{Tant que} sup >= inf \ul{ou} tab[sup] > a \ul{faire}\\
-                sup <- sup - 1\\
-            \ul{ftantque}\\
-            temp <- tab[sup]\\
-            tab[sup] <- tab[inf]\\
-            tab[inf] <- temp\\
-            sup <- sup - 1\\
-        \ul{fsi}\\
-        inf <- inf + 1\\
-    \ul{ftantque}\\
-    temp <- tab[sup]\\
-    tab[sup] <- tab[inda]\\
-    tab[inda] <- temp\\
-    \ul{retourne} sup\\
+    \>inda <- inf\\
+    \>a <- tab[inf]\\
+    \>inf <- inf + 1\\
+    \>\ul{Tant que } sup >= inf \ul{faire}\\
+        \>\>\ul{Si} tab[inf] > a\\
+        \>\>\ul{alors}\\
+            \>\>\>\ul{Tant que} sup >= inf \ul{ou} tab[sup] > a \ul{faire}\\
+                \>\>\>\>sup <- sup - 1\\
+            \>\>\>\ul{ftantque}\\
+            \>\>\>temp <- tab[sup]\\
+            \>\>\>tab[sup] <- tab[inf]\\
+            \>\>\>tab[inf] <- temp\\
+            \>\>\>sup <- sup - 1\\
+        \>\>\ul{fsi}\\
+        \>\>inf <- inf + 1\\
+    \>\ul{ftantque}\\
+    \>temp <- tab[sup]\\
+    \>tab[sup] <- tab[inda]\\
+    \>tab[inda] <- temp\\
+    \>\ul{retourne} sup\\
 \ul{fin}\\
 \end{tabbing}
 
 Fonction de tri des fréquences\newline
 \begin{tabbing}
+\kill XX\=XX\=XX\=XX\=XX\=XX\=XX\=XX\=XX\=XX\=
+\kill
 \ul{fonction} trier(frequences : \ul{tableau entier}[0..n], n : \ul{entier}, inf : \ul{entier}, sup : \ul{entier})\\
 \ul{debut}\\
-    \ul{Si} inf < sup\\
-    \ul{alors}\\
-        indice <- placer(frequences, inf, sup)\\
-        trier(frequences, n, inf, indice - 1)\\
-        trier(frequences, n, indice + 1, sup)\\
-    \ul{fsi}\\
+    \>\ul{Si} inf < sup\\
+    \>\ul{alors}\\
+        \>\>indice <- placer(frequences, inf, sup)\\
+        \>\>trier(frequences, n, inf, indice - 1)\\
+        \>\>trier(frequences, n, indice + 1, sup)\\
+    \>\ul{fsi}\\
 \ul{fin}\\ 
 \end{tabbing}
 
 Montrer la note principale(pour l'accordeur)\newline
 \begin{tabbing}
+\kill XX\=XX\=XX\=XX\=XX\=XX\=XX\=XX\=XX\=XX\=
+\kill
 \ul{fonction} montrerNote(mic : \ul{entreeMicro})\\
 \ul{debut}\\
-accorder <- vrai\\
-\ul{Tant que}\\
-freqs <- recupererFrequences(mic)\\
-freqs <- trier(freqs)\\
-\ul{ecrire} recupererNote(freqs[0])\\
-\ul{ftantque}\\
+\>accorder <- vrai\\
+\>\ul{Tant que}\\
+    \>\>freqs <- recupererFrequences(mic)\\
+    \>\>freqs <- trier(freqs)\\
+    \>\>\ul{ecrire} recupererNote(freqs[0])\\
+\>\ul{ftantque}\\
 \ul{fin}\\
 \end{tabbing}
 
@@ -130,34 +138,36 @@ freqs : freqs : \ul{tableau entier}[0..n] : Frequences envoyées par mic\newline
 Enregistrement d'une partition\newline
 %Enregistrement d'une partition
 \begin{tabbing}
+\kill XX\=XX\=XX\=XX\=XX\=XX\=XX\=XX\=XX\=XX\=
+\kill
 \ul{fonction} enregistrer(mic : \ul{entreeMicro}, seuilHaut :  \ul{entier}, seuilBas : \ul{entier}, tempo : \ul{entier}) : \ul{Partition}\\
 \ul{debut}\\
-enregistrer <- vrai\\
-j <- 0\\
-\ul{Tant que} enregistrer \ul{faire}\\
-    frequences <- recupererFrequences(mic)\\
-    frequences <- trier(frequences)\\
-    complet <- faux\\
-    fini <- faux\\
-    i <- 0 \\
-    \ul{Tant que} \ul{non} complet \ul{et} \ul{non} fini \ul{faire}\\
-        frequence <- frequences[i]
-        \ul{si} frequence > seuilHaut\\
-        \ul{alors}\\
-            ajouter(freqs, accord)\\
-            j <- j + 1\\
-        \ul{sinon}\\
-            \ul{si} frequence > seuilBas\\
-            \ul{alors}\\ 
-                ajouterTemps(retour[j], tempo / 16)\\
-            \ul{sinon}\\
-                fini <- vrai\\
-        \ul{fsi}
-    \ul{ftantque}\\     
-    i <- i + 1\\  
-    attendre(tempo / 16)\\
-\ul{ftantque}\\
-\ul{retourne} retour \\
+\>enregistrer <- vrai\\
+\>j <- 0\\
+\>\ul{Tant que} enregistrer \ul{faire}\\
+    \>\>frequences <- recupererFrequences(mic)\\
+    \>\>frequences <- trier(frequences)\\
+    \>\>complet <- faux\\
+    \>\>fini <- faux\\
+    \>\>i <- 0 \\
+    \>\>\ul{Tant que} \ul{non} complet \ul{et} \ul{non} fini \ul{faire}\\
+        \>\>\>frequence <- frequences[i]\\
+        \>\>\>\ul{si} frequence > seuilHaut\\
+        \>\>\>\ul{alors}\\
+            \>\>\>\>ajouter(freqs, accord)\\
+            \>\>\>\>j <- j + 1\\
+        \>\>\>\ul{sinon}\\
+            \>\>\>\>\ul{si} frequence > seuilBas\\
+            \>\>\>\>\ul{alors}\\ 
+                \>\>\>\>\>ajouterTemps(retour[j], tempo / 16)\\
+            \>\>\>\>\ul{sinon}\\
+                \>\>\>\>\>fini <- vrai\\
+        \>\>\>\ul{fsi}
+    \>\>\ul{ftantque}\\     
+    \>\>i <- i + 1\\  
+    \>\>attendre(tempo / 16)\\
+\>\ul{ftantque}\\
+\>\ul{retourne} retour \\
 \ul{fin}\\
 \end{tabbing}
 
