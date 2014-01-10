@@ -25,6 +25,9 @@
 \ul{Structures de donnees utilisees dans les algorithmes:}\newline
 \ul{Note} < frequence : \ul{entier}, nom : \ul{chaine} >\newline
 \ul{EntreeMicro} : Type correspondant à l'entrée micro de l'ordinateur. Il permet de récupérer les fréquences à un certain instant\newline
+\ul{Accord} : < notes : \ul{tableau Note}[0..6] , courant : \ul{entier}>\newline
+\ul{Partition} : < accords : \ul{Liste(Accord)} >\newline
+\ul{Gamme} : < notes : \ul{Liste(Note)}>\newline
 % Algo de récupérer une note avec sa fréquence
 Récupérer une note grâce à sa fréquence\newline
 \begin{tabbing}
@@ -99,6 +102,17 @@ Fonction de placement nécessaire à la fonction trier\newline
 \ul{fin}\\
 \end{tabbing}
 
+\ul{lexique}\newline
+meta : \ul{tableau entier}[0..n] : Meta donnée contenant les numéros de frequences\newline
+frequences : \ul{tableau entier}[0..n] : Les indices sont les numéros de fréquences et les valeurs sont le volume\newline
+n : \ul{entier} : Taille des tableaux frequences et meta\newline
+inf : \ul{entier} : Borne inférieur utilisée pour le placement\newline
+sup : \ul{entier} : Borne supérieure utilisée pour le placement\newline
+inda : \ul{entier} : Valeur de inf avant modification\newline
+a : \ul{entier} : Valeur du volume de la fréquence\newline
+temp : \ul{entier} : Variable temporaire\newline
+
+
 Fonction de tri des fréquences\newline
 \begin{tabbing}
 \kill XX\=XX\=XX\=XX\=XX\=XX\=XX\=XX\=XX\=XX\=
@@ -113,6 +127,13 @@ Fonction de tri des fréquences\newline
     \>\ul{fsi}\\
 \ul{fin}\\ 
 \end{tabbing}
+\ul{lexique}\newline
+meta : \ul{tableau entier}[0..n] : Meta donnée contenant les numéros de frequences\newline
+frequences : \ul{tableau entier}[0..n] : Les indices sont les numéros de fréquences et les valeurs sont le volume\newline
+n : \ul{entier} : Taille des tableaux frequences et meta\newline
+inf : \ul{entier} : Borne inférieur utilisée pour le tri\newline
+sup : \ul{entier} : Borne supérieure utilisée pour le tri\newline
+indice : \ul{entier} : Indice retournée par le placement pour diviser le tableau\newline
 
 Montrer la note principale(pour l'accordeur)\newline
 \begin{tabbing}
@@ -122,11 +143,11 @@ Montrer la note principale(pour l'accordeur)\newline
 \ul{debut}\\
 \>accorder <- vrai\\
 \>\ul{Tant que}\\
-    \>\>n <- 512
+    \>\>n <- 512\\
     \>\>freqs <- recupererFrequences(mic, n)\\
     \>\>\ul{Pour} i \ul{de} 0 \ul{a} n \ul{faire}\\
-        \>\>\>meta[i] <- i
-    \>\>\ul{fpour}
+        \>\>\>meta[i] <- i\\
+    \>\>\ul{fpour}\\
     \>\>meta <- trier(meta, freqs, n, 0, n - 1)\\
     \>\>\ul{ecrire} recupererNote(meta[0])\\
 \>\ul{ftantque}\\
@@ -148,38 +169,152 @@ Enregistrement d'une partition\newline
 \ul{debut}\\
 \>enregistrer <- vrai\\
 \>j <- 0\\
+\>accord <- accordVide() //Renvoi un accord vide\\
 \>\ul{Tant que} enregistrer \ul{faire}\\
     \>\>frequences <- recupererFrequences(mic)\\
-    \>\>n <- 512
+    \>\>n <- 512\\
     \>\>freqs <- recupererFrequences(mic, n)\\
     \>\>\ul{Pour} i \ul{de} 0 \ul{a} n \ul{faire}\\
-        \>\>\>meta[i] <- i
-    \>\>\ul{fpour}
+        \>\>\>meta[i] <- i\\
+    \>\>\ul{fpour}\\
     \>\>meta <- trier(meta, frequences, n, 0, n - 1)\\
     \>\>complet <- faux\\
     \>\>fini <- faux\\
     \>\>i <- 0 \\
+    \>\>new <- false\\
     \>\>\ul{Tant que} \ul{non} complet \ul{et} \ul{non} fini \ul{faire}\\
         \>\>\>indiceFrequence <- meta[i]\\
-        \>\>\>\ul{si} frequences[indiceFrequence] > seuilHaut\\
+        \>\>\>frequence <- frequences[indiceFrequence]\\
+        \>\>\>\ul{si} frequence > seuilHaut\\
         \>\>\>\ul{alors}\\
-            \>\>\>\>ajouter(freqs, accord)\\
-            \>\>\>\>j <- j + 1\\
+            \>\>\>\>new <- vrai\\
+            \>\>\>\>ajouterAccord(partition, accord)\\
+            \>\>\>\>accord <- accordVide()\\
+            \>\>\>\>complet <- ajouterNote(accord, recupererNote(frequence)\\
         \>\>\>\ul{sinon}\\
-            \>\>\>\>\ul{si} frequence > seuilBas\\
-            \>\>\>\>\ul{alors}\\ 
-                \>\>\>\>\>ajouterTemps(retour[j], tempo / 16)\\
+            \>\>\>\>\ul{si} \ul{non} new\\
+            \>\>\>\>\ul{alors}\\
+                \>\>\>\>\>\ul{Si} frequence > seuilBas\\
+                \>\>\>\>\>\ul{alors}\\
+                    \>\>\>\>\>\>acc <- accordVide()\\
+                    \>\>\>\>\>\>complet <- ajouterNote(accord, recupererNote(frequence))\\
+                \>\>\>\>\>\ul{sinon}\\
+                    \>\>\>\>\>\>fini <- vrai\\
+                \>\>\>\>\>\ul{fsi}\\
             \>\>\>\>\ul{sinon}\\
                 \>\>\>\>\>fini <- vrai\\
-        \>\>\>\ul{fsi}
+            \>\>\>\>\ul{fsi}\\
+        % \>\>\>indiceFrequence <- meta[i]\\
+        % \>\>\>\ul{si} frequences[indiceFrequence] > seuilHaut\\
+        % \>\>\>\ul{alors}\\
+        %     \>\>\>\>ajouterNote(recupereNote(frequences[indiceFrequence], accord)\\
+        %     \>\>\>\>new <- \ul{vrai}\\
+        %     \>\>\>\>j <- j + 1\\
+        % \>\>\>\ul{sinon}\\
+        %     \>\>\>\>\ul{si} frequence > seuilBas\\
+        %     \>\>\>\>\ul{alors}\\ 
+        %         \>\>\>\>\>ajouterTemps(retour[j], tempo / 16)\\
+        %     \>\>\>\>\ul{sinon}\\
+        %         \>\>\>\>\>fini <- vrai\\
+        %     \>\>\>\>\ul{fsi}\\
+        % \>\>\>\ul{fsi}
     \>\>\ul{ftantque}\\     
+    \>\>\ul{Si} \ul{non} new\\
+    \>\>\ul{alors}\\
+        \>\>\>\ul{si} \ul{non} estVide(acc)\\
+        \>\>\>\ul{alors}\\
+            \>\>\>\>\ul{si} acc = accord\\
+            \>\>\>\>\ul{alors}\\
+                \>\>\>\>\>ajouterTemps(1000 / tempo / 16)\\
+            \>\>\>\>\ul{fsi}\\
+        \>\>\>\ul{fsi}\\
+    \>\>\ul{fsi}\\
     \>\>i <- i + 1\\  
-    \>\>attendre(tempo / 16)\\
+    \>\>attendre(1000 / tempo / 16)\\
 \>\ul{ftantque}\\
 \>\ul{retourne} retour \\
 \ul{fin}\\
 \end{tabbing}
 
-Nous attendons pendant tempo / 16 car c'est la plus petite unité de temps représentable dans une partition. L'utilisateur doit rentrer le tempo dans lequel il compte jouer.
+Nous attendons pendant 1000 / tempo / 16 car c'est la plus petite unité de temps représentable dans une partition. L'utilisateur doit rentrer le tempo dans lequel il compte jouer.
+Nous attendons en milliseconde.
 
 
+\begin{tabbing}
+\kill XX\=XX\=XX\=XX\=XX\=XX\=XX\=XX\=XX\=XX\=
+\kill
+\ul{fonction} ajouterNote(accord : \ul{Accord}, note : \ul{Note}) : \ul{booleen}\\ 
+\ul{debut}\\
+    \>\ul{si} accord.courant = 5\\
+    \>\ul{alors}\\
+        \>\>retour <- vrai\\
+    \>\ul{sinon}\\
+        \>\>accord[courant] = note\\
+        \>\>accord.courant <- accord.courant + 1\\
+    \>\ul{fsi}\\
+    \>\ul{retourne} retour\\ 
+\ul{fin}\\
+\end{tabbing}
+
+\begin{tabbing}
+\kill XX\=XX\=XX\=XX\=XX\=XX\=XX\=XX\=XX\=XX\=
+\kill
+\ul{fonction} ajouterAccord(partition : \ul{Partition}, accord : \ul{Accord})\\
+\ul{debut}\\
+    \>adjqlis(partition, accord)\\
+\ul{fin}\\
+\end{tabbing}
+
+
+\begin{tabbing}
+\kill XX\=XX\=XX\=XX\=XX\=XX\=XX\=XX\=XX\=XX\=
+\kill
+\ul{fonction} analyserGamme(partition : \ul{Partition}, gammes : \ul{tableau Gamme}[0..n], n : \ul{entier}) : Gamme\\
+\ul{debut}\\
+    % \>//On compte toute les notes\\
+    \>notes <- partition.notes\\
+    \>indice <- tete(notes)\\
+    \>\ul{Tant que} \ul{non} finliste(notes, indice) \ul{faire}\\
+        \>\>accord <- val(notes, indice)\\
+        \>\>\ul{Pour chaque} note \ul{dans} accord \ul{faire}\\
+            \>\>\>tnotes[note] <- tnotes[note] + 1\\
+        \>\>\ul{fpourchaque}\\
+        indice <- suc(notes, indice)\\
+    \>\ul{ftantque}\\
+
+    % \>trierNotes(notes)\\
+    \>\ul{Pour} i \ul{de} 0 \ul{a} n \ul{faire}\\
+        \>\>gamme <- gammes[i]\\
+        \>\>pourcentage[i] <- pourcentageGamme(gamme, tnotes)\\
+    \>\ul{fpour}\\
+    pourcentMax <- 0\\
+    \>\ul{Pour} i \ul{de} 0 \ul{a} n \ul{faire}\\
+        \>\>\ul{si} pourcentage[i] > pourcentMax\\
+        \>\>\ul{alors}\\
+            \>\>\>gammeMax <- gammes[i]\\
+        \>\>\ul{fsi}\\
+    \>\ul{fpour}\\
+
+    \>\ul{retourne} gammeMax\\
+\ul{fin}\\
+\end{tabbing}
+
+Algorithme utilisé pour déterminer combien il y a de notes d'une gamme dans un ensemble de notes\newline
+\begin{tabbing}
+\kill XX\=XX\=XX\=XX\=XX\=XX\=XX\=XX\=XX\=XX\=
+\kill
+\ul{fonction} pourcentageGamme(gamme : \ul{Gamme}, notes : \ul{table (Note => entier)}) : \ul{entier}\\
+\ul{debut}\\
+    \>indice <- tete(gamme)\\
+    \>nbNotesGammes <- 0\\
+    \>\ul{Tant que} \ul{non} finliste(gamme, indice) \ul{faire}\\
+        \>\>note <- val(gamme, indice)\\
+        \>\>nbNotesGammes <- nbNotesGammes + accestab(notes, note)\\
+    \>\ul{ftantque}\\
+    \>nbTotal <- 0\\
+    \>\ul{Pour chaque} valeur \ul{dans} \ul{notes} \ul{faire}\\
+        \>\>nbTotal <- nbTotal + valeur\\
+    \>\ul{fpourchaque}\\
+    \>\ul{retourne} (nbNotesGammes / nbTotal ) * 100\\
+\ul{fin}\\
+\end{tabbing}
