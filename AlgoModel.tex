@@ -74,27 +74,27 @@ Fonction de placement nécessaire à la fonction trier\newline
 \begin{tabbing}
 \kill XX\=XX\=XX\=XX\=XX\=XX\=XX\=XX\=XX\=XX\=
 \kill
-\ul{fonction} placer(tab : \ul{InOut} \ul{tableau entier}[0..n], n : \ul{entier}, inf : \ul{entier}, sup : \ul{entier}) : \ul{entier}\\
+\ul{fonction} placer(meta : \ul{tableau entier}[0..n], frequences : \ul{tableau entier}[0..n], n : \ul{entier}, inf : \ul{entier}, sup : \ul{entier}) : \ul{entier}\\
 \ul{debut}\\
     \>inda <- inf\\
-    \>a <- tab[inf]\\
+    \>a <- frequences[meta[inf]]\\
     \>inf <- inf + 1\\
     \>\ul{Tant que } sup >= inf \ul{faire}\\
-        \>\>\ul{Si} tab[inf] > a\\
+        \>\>\ul{Si} frequences[meta[inf]] > a\\
         \>\>\ul{alors}\\
-            \>\>\>\ul{Tant que} sup >= inf \ul{ou} tab[sup] > a \ul{faire}\\
+            \>\>\>\ul{Tant que} sup >= inf \ul{ou} frequences[meta[[sup]] > a \ul{faire}\\
                 \>\>\>\>sup <- sup - 1\\
             \>\>\>\ul{ftantque}\\
-            \>\>\>temp <- tab[sup]\\
-            \>\>\>tab[sup] <- tab[inf]\\
-            \>\>\>tab[inf] <- temp\\
+            \>\>\>temp <- meta[sup]\\
+            \>\>\>meta[sup] <- meta[inf]\\
+            \>\>\>meta[inf] <- temp\\
             \>\>\>sup <- sup - 1\\
         \>\>\ul{fsi}\\
         \>\>inf <- inf + 1\\
     \>\ul{ftantque}\\
-    \>temp <- tab[sup]\\
-    \>tab[sup] <- tab[inda]\\
-    \>tab[inda] <- temp\\
+    \>temp <- meta[sup]\\
+    \>meta[sup] <- meta[inda]\\
+    \>meta[inda] <- temp\\
     \>\ul{retourne} sup\\
 \ul{fin}\\
 \end{tabbing}
@@ -103,13 +103,13 @@ Fonction de tri des fréquences\newline
 \begin{tabbing}
 \kill XX\=XX\=XX\=XX\=XX\=XX\=XX\=XX\=XX\=XX\=
 \kill
-\ul{fonction} trier(frequences : \ul{tableau entier}[0..n], n : \ul{entier}, inf : \ul{entier}, sup : \ul{entier})\\
+\ul{fonction} trier(meta : \ul{tableau entier}[0..n], frequences : \ul{tableau entier}[0..n], n : \ul{entier}, inf : \ul{entier}, sup : \ul{entier})\\
 \ul{debut}\\
     \>\ul{Si} inf < sup\\
     \>\ul{alors}\\
-        \>\>indice <- placer(frequences, inf, sup)\\
-        \>\>trier(frequences, n, inf, indice - 1)\\
-        \>\>trier(frequences, n, indice + 1, sup)\\
+        \>\>indice <- placer(meta, frequences, inf, sup)\\
+        \>\>trier(meta, frequences, n, inf, indice - 1)\\
+        \>\>trier(meta, frequences, n, indice + 1, sup)\\
     \>\ul{fsi}\\
 \ul{fin}\\ 
 \end{tabbing}
@@ -122,9 +122,13 @@ Montrer la note principale(pour l'accordeur)\newline
 \ul{debut}\\
 \>accorder <- vrai\\
 \>\ul{Tant que}\\
-    \>\>freqs <- recupererFrequences(mic)\\
-    \>\>freqs <- trier(freqs)\\
-    \>\>\ul{ecrire} recupererNote(freqs[0])\\
+    \>\>n <- 512
+    \>\>freqs <- recupererFrequences(mic, n)\\
+    \>\>\ul{Pour} i \ul{de} 0 \ul{a} n \ul{faire}\\
+        \>\>\>meta[i] <- i
+    \>\>\ul{fpour}
+    \>\>meta <- trier(meta, freqs, n, 0, n - 1)\\
+    \>\>\ul{ecrire} recupererNote(meta[0])\\
 \>\ul{ftantque}\\
 \ul{fin}\\
 \end{tabbing}
@@ -146,13 +150,18 @@ Enregistrement d'une partition\newline
 \>j <- 0\\
 \>\ul{Tant que} enregistrer \ul{faire}\\
     \>\>frequences <- recupererFrequences(mic)\\
-    \>\>frequences <- trier(frequences)\\
+    \>\>n <- 512
+    \>\>freqs <- recupererFrequences(mic, n)\\
+    \>\>\ul{Pour} i \ul{de} 0 \ul{a} n \ul{faire}\\
+        \>\>\>meta[i] <- i
+    \>\>\ul{fpour}
+    \>\>meta <- trier(meta, frequences, n, 0, n - 1)\\
     \>\>complet <- faux\\
     \>\>fini <- faux\\
     \>\>i <- 0 \\
     \>\>\ul{Tant que} \ul{non} complet \ul{et} \ul{non} fini \ul{faire}\\
-        \>\>\>frequence <- frequences[i]\\
-        \>\>\>\ul{si} frequence > seuilHaut\\
+        \>\>\>indiceFrequence <- meta[i]\\
+        \>\>\>\ul{si} frequences[indiceFrequence] > seuilHaut\\
         \>\>\>\ul{alors}\\
             \>\>\>\>ajouter(freqs, accord)\\
             \>\>\>\>j <- j + 1\\
