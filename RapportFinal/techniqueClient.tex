@@ -41,4 +41,8 @@ mais il serait possible de l'adapter pour tous les instrument. Il est également
 uniquement en changeant le code, faute d'un manque de temps pour développer cette fonctionnalité.
 
 \paragraph{}
+Le pattern MVC n'existant pas en C++, nous avons créé une classe NoSkin correspondant à l'affichage graphique, une classe Partition représentant le modèle de l'application et une classe Controller afin de rester au plus proche de cette méthode de conception. \\
+Ceci nous a permis de nous répartir les tâches de manière optimale et de lier nos parties respectives en évitant la majorité des complications. 
+
+\paragraph{}
 En ce qui concerne la classe graphique principale NoSkin, on y a implanté les éléments nécessaires à l'interface graphique et on lui a assigné un layout de base, tout en considérant le fait que par la suite on pourrait hériter de cette classe pour permettre des interfaces plus personnalisées.
