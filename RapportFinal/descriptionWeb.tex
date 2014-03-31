@@ -1,0 +1,26 @@
+\paragraph{}
+Le site web permet de partager et de sauvegarder ses partitions.
+Ainsi, les utilisateurs peuvent accèder à leurs partitions depuis le site.
+Le site suit le modèle MVC, ce modèle est complété par la mise en place de routes. \\
+Les routes de définir ce à quoi correspond chaque action (les actions sont représentées par les url). Ces routes permettent donc d'effectuer le lien entre l'URL fournie et les classes disponibles dans le dossier controllers. \\
+Le dossier controllers contient les différentes classes qui font le lien entre la vue (le code HTML) et le modèle. Ces classes contiennent des méthodes qui sont appellées par les routes. \\
+Enfin la vue est générée par le serveur quand l'un des controlleurs en a besoin. La bibliothèque Handlebars est utilisée pour la vue, c'est une bibliothèque qui fournit un langage de templates qui vient compléter le code HTML. Ainsi, ce language permet de rajouter de l'élégance dans le code et éviter des répétitions. \\
+De plus, nous avons utilisé la bibliothèque Sequelize.js pour le modèle.
+Ce framework permet de manipuler les données en utilisant le pattern Active Record. Ainsi, les données sont facilement manipulables. \\
+En effet, les tables sont représentées par des objets. On peut donc créer un nouvel objet et ensuite appliquer la méthode save sur ce dernier pour l'enregistrer dans la base de données. \\
+\paragraph{}
+Nous avons essayé d'utiliser plusieurs technologies webs demandées par les recruteurs ces derniers temps. \\
+Par exemple, nous avons utilisé NodeJS. Ainsi, nous avons codé toute l'application web en javascript. Le javascript a permis d'apprendre certains aspects de la programmation non enseignée à l'IUT (programmation fonctionnelle ou encore les callbacks et l'asynchronysme). \\
+Les websockets ont été utilisées pour intéragir avec l'utilisateur sans aucun rechargement de pages. Le navigateur web peut donc envoyer des données au serveur et le serveur peut lui répondre sans aucun raffraichissement de la page. \\
+Ce projet a donc eu un réel impact pédagogique. De plus, NodeJS et les technologies associées étant particulièrements récentes, nous devions travailler de manière autonome et résoudre des problèmes avec des solutions parfois inexistantes sur internet. \\
+\\
+Puis, nous avons du revoir certaines parties de notre MCD. 
+En effet, nous avons remarqué que certaines tables n'étaient pas optimisées.
+\paragraph{}
+Enfin, l'application web est structurée de manière à respecter au mieux certaines conventions établies par la communauté NodeJS. \\
+Nous avons donc un dossier config qui contient toutes les informations de configuration de l'application. Ce dossier contient plus particulièrement les fichiers routes.js et sockets.js qui permettent de rediriger vers le bon controller en fonction de l'action a effectuer. \\
+De plus, nous avons un dossier controllers qui contient tous les controllers de l'application. Ces controllers contiennent les méthodes à effectuer pour chaque actions. Ils utilisent les objets du modèle qui sont définies dans le dossier modèles. \\
+Puis le dossier public contient l'application côté client. Donc les différentes sources Handlebars qui seront traduites en HTML, le code CSS et le code Javascript de l'application. \\
+Chaque dossier contient plusieurs fichiers qui représentent les composants importants de l'application. Par exemple, le dossier modèles contient des fichiers comme user.js ou encore tab.js. De même, le controller qui intéragit avec la partie user se situe dans le dossier controllers et s'intitule user.js (Ceci est une convention de nommage et de structure utilisée par la communauté NodeJS). \\
+Enfin, à la racine de l'application il y a le fichier principal pour lancer le serveur: app.js ainsi que différents fichiers de configurations pour des applications telles que Grunt (Gruntfile), Compass (config.rb) ou NodeJS (package.json). \\
+
