@@ -19,20 +19,30 @@ et les performances seraient également plus grandes.
 
 \paragraph{}
 Une grande amélioration serait également de rajouter la possibilité d'enregistrer plusieurs pistes. Cela permettrait donc de 
-composer des musiques plus complètes avec par exemple une guitare rythmique et une guitare solo.
+composer des musiques plus complètes avec par exemple une guitare rythmique et une guitare solo. Si l'on y ajoute également 
+la possibilité de changer le son de l'instrument joué, cela permettrait de faire de ce projet une application de 
+composition musicale vraiment très complète. En effet, cela permettrait d'ajouter exactement ce que l'on veut et ainsi 
+avoir le rendu possible de la chanson finale.
 
 \paragraph{}
 Les données de connexion à la base de données sont enregistrées en clair dans un fichier de configuration, il faudrait changer 
-ce fichier et le crypté pour que les utilisateurs ne puissent pas accéder à cette donnée confidentielle.
+ce fichier et le crypter pour que les utilisateurs ne puissent pas accéder à cette donnée confidentielle. Il faudrait également 
+implémenter le même algorithme de hashage dans l'application que dans le serveur afin de sécuriser la connection de l'utilisateur 
+par le biais de l'application. 
 
 \paragraph{}
-Une autre amélioration possible serait l'ajout de la possibilité pour l'utilisateur de consulter les partitions qu'il possède sur son compte sur le site web et de les télécharger. 
-De plus, on pourrait ajouter la possibilité de télécharger en une fois l'ensemble des partitions qu'il possède afin de lui faciliter cette tâche fastidieuse dans le cas où il veut importer toutes ses oeuvres sur un nouveau PC. 
+Une autre amélioration possible serait l'ajout de la possibilité pour l'utilisateur de consulter les partitions qu'il possède sur son compte sur le site web et de les télécharger. Cette implémentation été déjà en court mais n'a pas pu être finalisée dans les délais.
+De plus, on pourrait ajouter la possibilité de télécharger en une fois l'ensemble des partitions qu'il possède afin de lui faciliter cette tâche fastidieuse dans le cas où il veut importer toutes ses oeuvres sur un nouveau PC.
 
 \paragraph{}
-Afin de faciliter le déplacement lors de la lecture et de l'enregistrement de la partition, on pourrait ajouter deux curseurs graphiques (l'un correspondant à la lecture et l'autre à l'enregistrement).
-Ceci permettrait de réaliser les deux indépendamment et de faciliter le déplacemment aux zones désirées.
+Afin de faciliter le déplacement lors de la lecture et de l'enregistrement de la partition, nous avions dans l'intention d'ajouter 
+deux curseurs graphiques (l'un correspondant à la lecture et l'autre à l'enregistrement) afin de pouvoir suivre l'enregistrement ainsi que 
+la lecture de la partition. Nous pourrions ainsi mettre sur pause à un endroit voulu et le modifier, faire revenir le curseur en arrière et 
+voir le résultat obtenu. Ces deux curseurs faciliteraient donc amplement les taches de naviguation à travers les différentes parties de la partition. 
+Si on joint ceci à la fonctionnalité d'avoir plusieurs pistes instrumentales, on pourrait placer le curseur de lecture à un endroit, et le curseur 
+d'enregistrement au même endroit, et ainsi jouer en même temps que ce que l'on a déjà enregistrer mais sur une autre piste.
 
 \paragraph{}
-On a préparé la possibilité d'implémenter l'utilisation de skins pour modifier l'apparence de l'application afin que le client puisse personnaliser son logiciel comme il le souhaite. \\
+On a préparé la possibilité d'implémenter l'utilisation de skins pour modifier l'apparence de l'application afin que le client puisse personnaliser son logiciel comme il le souhaite. Des emplacements de personnalisation sont déjà présent dans la fenêtre de configuration.\\
 De plus, on aurait pu réserver une zone du site web pour y recenser tous les skins existants et permettre à l'utilisateur de télécharger celui qui lui plait. 
+Il aurait pour cela fallu faire en sorte de pouvoir enregistrer le skin sous forme de fichier afin de le partager. 
