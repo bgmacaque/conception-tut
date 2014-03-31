@@ -1,0 +1,77 @@
+\documentclass[a4paper]{article} 
+
+%utf8 or latin1 ?
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[frenchb]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{soul}
+\usepackage{url}
+
+
+\graphicspath{{images/}{Maquettes/PNG/}{UML/}}
+\title{Rapport de conception}
+\author{Adonis \bsc{Najimi},\\
+ Valentin \bsc{Stern},\\
+ Vincent \bsc{Albert},\\
+ Théo \bsc{Gerriet}}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage
+
+\section{Présentation du projet}
+    \subsection{Étude de l'existant}
+        \input{Existant}
+    \subsection{Cahier des charges fonctionnel}
+        \input{cahierCharges}
+    \subsection{Repartition des charges}
+        \input{repartitionCharges}
+        \newpage
+  \subsection{Echéancier}
+        \input{echeancier}
+        
+\newpage
+\section{Client C++}
+    \subsection{Présentation du client}
+        \input{presentationClient}
+    \subsection{Description du contenu du modele}
+        \input{contenuModel}
+    \subsection{UML du modele de l'application}
+        \input{UMLModel}
+    \subsection{Algorithmes}
+        \input{AlgoModel}
+    \subsection{UML de l'interface graphique}
+        \input{GUI}
+    \subsection{Maquettes du client}
+        \input{Maquettes_client}
+    \subsection{Liaison avec l'application web}
+        \input{Reseau}
+        
+\newpage
+
+\section{Application Web}
+
+    \subsection{Maquettes d'écran}
+        \input{Maquettes}
+\newpage
+
+    \subsection{Modèle Merise MCD}
+        \input{MCD}
+\newpage
+
+    \subsection{Modèle Merise MLD}
+        \input{MLD}
+\newpage
+
+    \subsection{Structure de l'application}
+        \input{Structure}
+
+\newpage
+\tableofcontents
+
+
+\end{document}

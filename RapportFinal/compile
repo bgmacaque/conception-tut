@@ -1,0 +1,6 @@
+#!/bin/bash
+#creation du pdf
+pdflatex ./rapport.tex rapport.pdf ; mv rapport.pdf ./bin/rapport.pdf ; open ./bin/rapport.pdf
+#suppression des fichiers auxiliaires 
+rm *.aux ;  rm *.log
+
