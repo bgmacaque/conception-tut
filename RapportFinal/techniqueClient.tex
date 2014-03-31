@@ -1,0 +1,21 @@
+\paragraph{}
+Afin de lier l'application cliente et l'application web, nous utilisons un format de sauvegarde partagé par les deux 
+langages (C++ et JS), le JSON. Nous avons donc conçu un simple parser JSON afin de pouvoir sauvegarder une partition 
+soit sur son PC local, soit dans la base de donnée distante pour la partager avec le monde. Nous avons choisi 
+ce format d'enregistrement car il est aisément lisible sur le serveur qui peut alors traiter rapidement les informations 
+pour les afficher au utilisateurs, et car c'est un format de plus en plus répandu. Nous aurions pu prendre du XML, mais 
+il aurait été moins bien traité côté serveur. De plus, le format JSON consomme moins de place en mémoire que le format XML,
+car il est légèrement moins verbeux. L'application possède donc des fonctionnalités de sauvegardes sous forme de fichier et 
+de sauvegarde sur le \"cloud\" representé par le site web. Il est possible de réouvrir une partition sauvegardée en local.
+
+\paragraph{}
+La bibliothèque FMOD Ex nous permet de récupérer le son entrant de l'application. Elle a été choisi car elle est simple 
+d'utilisation tout en étant efficace. Cela nous a permis de nous concentrer sur le traitement de ce son, qui constitue 
+une des parties les plus importante du projet. Nous avons suivi l'algorithme du rapport de conception, et y avons apporté 
+quelques modifications pour l'implémentation réelle.
+
+\paragraph{}
+La bibliothèque Qt ne crée pas de nouveau thread pour sa partie graphique comme Swing par exemple, nous avons donc du créer deux nouveaux 
+thread pour l'enregistrement de partitions et l'accordeur. Il a été aisé d'implementer ces thread car Qt nous permet d'en 
+faire un héritant d'une de ses classes. Sans ces threads, l'applications serait par exemple bloquée si l'on appuie sur le 
+bouton d'enregistrement, car celui ne serait plus accessible une fois l'enregistrement lancé.
