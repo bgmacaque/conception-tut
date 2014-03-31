@@ -1,0 +1,15 @@
+\paragraph{}
+Au niveau de la prise de sons, il y a la possibilité d'améliorer celle ci et obtenir plus de précision 
+en implémentant un algorithme permettant de détecter quels sont les seuils à prendre en compte pour la prise de son 
+et obtenir une analyse beaucoup plus fine du son entrant et ainsi des partitions correspondant mieux à la 
+réalité. 
+\paragraph{}
+Au niveau de la sauvegarde des partitions, il serait possible de compresser un peu plus chaque fichier 
+car il y a beaucoup d'espaces. Cela consisterait à améliorer le parser JSON des partitions. En effet, sur un petit fichier 
+de par exemple 300 caractères, représentant ainsi une partition de 2 accords comportant en tout 7 notes, le gain 
+possible en enlevant les espaces est de 40\%. Ainsi, le remplissage de la base de données serait moins rapide, 
+et les performances seraient également plus grandes.
+\paragraph{}
+Nous souhaitions faire apparaitre les notes dans la partition en temps réel, mais cela a été impossible à cause 
+du fait que l'enregistrement de la partition se fait dans un Thread, et la création de nouvels objets est 
+interdit par Qt. Nous avions donc une erreur, et une améliorations possible serait de permettre cette fonctionnalité.
