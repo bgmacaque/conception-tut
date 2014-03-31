@@ -19,3 +19,17 @@ La bibliothèque Qt ne crée pas de nouveau thread pour sa partie graphique comm
 thread pour l'enregistrement de partitions et l'accordeur. Il a été aisé d'implementer ces thread car Qt nous permet d'en 
 faire un héritant d'une de ses classes. Sans ces threads, l'applications serait par exemple bloquée si l'on appuie sur le 
 bouton d'enregistrement, car celui ne serait plus accessible une fois l'enregistrement lancé.
+
+\paragraph{}
+La quantité de fréquences a traiter étant importante (8192 tous les pas de temps), nous avons décidé d'utiliser 
+le tri rapide pour un maximum de performance. Nous avons due y ajouter une surcouche sauvegardant les places de chaque fréquences 
+car FMOD assigne chaque volume de fréquence à sa place dans le tableau. Si nous avions uniquement trié le tableau de fréquences 
+en fonction du volume, nous n'aurions plus la possibilité de savoir quelle fréquence a le volume le plus haut. 
+
+\paragraph{}
+Nous avons choisi de fournir deux classes sous le design pattern du singleton car cela simplifiait beaucoup le développement, et 
+car plusieurs instances de ces deux classes serait inutiles. La classe Notes fournit donc toutes les notes possiblement enregistrable 
+dans la musique, et la classe Guitar fournit la possibilité de convertir les notes jouées en frettes pour permettre l'affichage de la 
+tablature. Nous nous sommes donc plus concentré sur les tablatures pour guitare et non les partitions en général, 
+mais il serait possible de l'adapter pour tous les instrument. Il est également possible de changer l'accordage de la guitare, mais 
+uniquement en changeant le code, faute d'un manque de temps pour développer cette fonctionnalité.
