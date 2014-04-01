@@ -36,6 +36,16 @@ Enfin, à la racine de l'application il y a le fichier principal pour lancer le 
 
 \paragraph{}
 Au niveau des fonctionnalités implantées, nous avons fait le profil utilisateur ainsi que le profil d'une tablature. Nous n'avons pas eu le temps de faire le profil d'un groupe. La plupart des fonctions du controller et du modèle pour le groupe sont codées mais il manque les différentes vues associées. Certaines vues ne sont pas suffisament travaillées par manque de temps. \\
+On affiche la partition et la tablature qui lui correspond. La note (dans la zone grise à côté du nom de la partition) est calculée à partir des notes des commentaires que tous les utilisateurs peuvent écrire. \\
+Si il n'y a pas de commentaires correspondants, la note est fixée à 0. \\
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{tab}
+\caption{Affichage d'une tablature}
+\end{figure}
+
+\paragraph{}
 La page d'accueil du site est une page qui recense les différentes tablatures postées par les personnes que suivent l'utilisateur connecté.
 Elle se résume donc à une liste de tablatures que l'on peut télécharger.
 Voici un exemple de page du site, la page de profil d'un utilisateur
